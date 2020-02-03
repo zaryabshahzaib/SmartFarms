@@ -122,6 +122,9 @@
     border-bottom-right-radius: $widget-border-radius;
   }
 }
+.widgetBody .title{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+}
 
 .widgetControls + .widgetBody {
   margin-top: $widget-padding-vertical;

@@ -3,7 +3,7 @@
     <b-navbar-nav class="navbar-nav-mobile ml-auto">
         <b-nav-text class="mr-3">
           <b-alert class="header-alert animated bounceIn delay-2s" dismissible v-model="showNavbarAlert">
-            <i class="fa fa-info-circle mr-1"></i> Check out Light Blue Settings on the right!
+            <i class="fa fa-info-circle mr-1"></i> Check out the new Disease Prediction feature on the left!
           </b-alert>
         </b-nav-text>
         <b-nav-form class="d-sm-down-none mr-3">
@@ -15,42 +15,14 @@
         <b-nav-item-dropdown right extra-menu-classes="py-0">
           <template slot="button-content">
             <span class="avatar thumb-sm float-left mr-2">
-              <img class="rounded-circle" src="../../assets/people/a5.jpg" alt="..." />
+              <img class="rounded-circle" src="../../assets/people/a8.png" alt="..." />
             </span>
-            <span class="d-md-down-none d-lg-inline">Philip <span class="fw-semi-bold">Smith</span></span>
-            <span class="ml-2 circle bg-warning text-white fw-bold d-md-down-none d-lg-inline-block">13</span>
+            <span class="d-md-down-none d-lg-inline">Ahmed <span class="fw-semi-bold">Saqib</span></span>
+            <span class="ml-2 circle bg-warning text-white fw-bold d-md-down-none d-lg-inline-block">2</span>
           </template>
           <notifications />
         </b-nav-item-dropdown>
-        <b-nav-item-dropdown no-caret right extra-menu-classes="dropdown-menu-messages">
-          <template slot="button-content">
-            <i class="la la-comment px-2" />
-          </template>
-          <b-dropdown-item>
-            <span class="avatar thumb-sm float-left mr-3">
-              <img class="rounded-circle" src="../../assets/people/a1.jpg" alt="..." />
-            </span>
-            <h6>Jane <span class="fw-semi-bold">Hew</span></h6>
-            <span class="fs-sm text-muted fw-thin">Hey, John! How is it going? ...</span>
-          </b-dropdown-item>
-          <b-dropdown-item>
-            <span class="avatar thumb-sm float-left mr-3">
-              <img class="rounded-circle" src="../../assets/people/a2.jpg" alt="..." />
-            </span>
-            <h6>Alies <span class="fw-semi-bold">Rumiancaŭ</span></h6>
-            <span class="fs-sm text-muted fw-thin">I will definitely buy this template</span>
-          </b-dropdown-item>
-          <b-dropdown-item>
-            <span class="avatar thumb-sm float-left mr-3">
-              <img class="rounded-circle" src="../../assets/people/a3.jpg" alt="..." />
-            </span>
-            <h6>Alexey <span class="fw-semi-bold">Kamandzirau</span></h6>
-            <span class="fs-sm text-muted fw-thin">I will definitely buy this template</span>
-          </b-dropdown-item>
-          <b-dropdown-item-button class="text-center">
-            See all messages <i class="fa fa-arrow-right ml-1"></i>
-          </b-dropdown-item-button>
-        </b-nav-item-dropdown>
+        
         <b-nav-item class="divider"></b-nav-item>
         <b-nav-item-dropdown no-caret right>
           <template slot="button-content">
@@ -67,34 +39,7 @@
             <i class="la la-sign-out" /> Log Out
           </b-dropdown-item-button>
         </b-nav-item-dropdown>
-        <b-nav-item-dropdown no-caret right class="d-md-down-none">
-          <template slot="button-content">
-            <i class="la la-globe px-2" />
-          </template>
-          <b-dropdown-item>
-            <span class="badge badge-danger mr-2"><i class="fa fa-bell-o"></i></span>
-            <span class="fs-sm">Check out this awesome ticket</span>
-          </b-dropdown-item>
-          <b-dropdown-item>
-            <span class="badge badge-warning mr-2"><i class="fa fa-question-circle"></i></span>
-            <span class="fs-sm">Finish 2019 annual report</span>
-          </b-dropdown-item>
-          <b-dropdown-item>
-            <span class="badge badge-success mr-2"><i class="fa fa-info-circle"></i></span>
-            <span class="fs-sm">Update Vue.js to the newest version</span>
-          </b-dropdown-item>
-          <b-dropdown-item>
-            <span class="badge badge-info mr-2"><i class="fa fa-plus"></i></span>
-            <span class="fs-sm">Establish OKR system</span>
-          </b-dropdown-item>
-          <b-dropdown-item>
-            <span class="badge badge-danger mr-2"><i class="fa fa-tag"></i></span>
-            <span class="fs-sm">Fill in time tracking</span>
-          </b-dropdown-item>
-          <b-dropdown-item-button class="text-center">
-            See all tickets <i class="fa fa-arrow-right ml-1"></i>
-          </b-dropdown-item-button>
-        </b-nav-item-dropdown>
+        
         <b-nav-item class="d-md-down-none" @click="logout">
           <i class="la la-power-off px-2" />
         </b-nav-item>

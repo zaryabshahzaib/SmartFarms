@@ -1,81 +1,176 @@
 <template>
   <div class="dashboard-page">
-    <h1 class="page-title">Dashboard &nbsp;
-      <small>
-        <small>The Lucky One</small>
-      </small>
-    </h1>
     <b-row>
-      <b-col lg="7">
-        <Widget class="bg-transparent">
-          <Map />
-        </Widget>
-      </b-col>
-      <b-col lg="4" offset-lg="1">
-        <Widget
-          class="bg-transparent"
-          title="<h5>Map<span class='fw-semi-bold'>&nbsp;Statistics</span></h5>"
-          settings refresh close customHeader
-        >
-          <p>Status: <strong>Live</strong></p>
-          <p>
-            <span class="circle bg-warning text-white"><i class="fa fa-map-marker" /></span> &nbsp;
-            146 Countries, 2759 Cities
-          </p>
-          <div class="row progress-stats">
-            <div class="col-md-9 col-12">
-              <h6 class="name">Foreign Visits</h6>
-              <p class="description deemphasize mb-xs">Some Cool Text</p>
-              <b-progress variant="primary" :value="60" :max="100" class="bg-white progress-xs" />
-            </div>
-            <div class="col-md-3 col-12 text-center">
-              <span class="status rounded rounded-lg bg-widget">
-                <span><AnimatedNumber :value="75" v-bind="animateNumberOptions"></AnimatedNumber>%</span>
-              </span>
-            </div>
-          </div>
-          <div class="row progress-stats">
-            <div class="col-md-9 col-12">
-              <h6 class="name">Local Visits</h6>
-              <p class="description deemphasize mb-xs">P. to C. Conversion</p>
-              <b-progress variant="danger" :value="39" :max="100" class="bg-white progress-xs" />
-            </div>
-            <div class="col-md-3 col-12 text-center">
-              <span class="status rounded rounded-lg bg-widget">
-                <span><AnimatedNumber :value="84" v-bind="animateNumberOptions"></AnimatedNumber>%</span>
-              </span>
-            </div>
-          </div>
-          <div class="row progress-stats">
-            <div class="col-md-9 col-12">
-              <h6 class="name">Sound Frequencies</h6>
-              <p class="description deemphasize mb-xs">Average Bitrate</p>
-              <b-progress variant="success" :value="80" :max="100" class="bg-white progress-xs" />
-            </div>
-            <div class="col-md-3 col-12 text-center">
-              <span class="status rounded rounded-lg bg-widget">
-                <span><AnimatedNumber :value="92" v-bind="animateNumberOptions"></AnimatedNumber>%</span>
-              </span>
-            </div>
-          </div>
-          <h6 class="fw-semi-bold mt">Map Distributions</h6>
-          <p>Tracking: <strong>Active</strong></p>
-          <p>
-            <span class="circle bg-warning text-white"><i class="fa fa-cog" /></span>
-            &nbsp; 391 elements installed, 84 sets
-          </p>
-          <b-input-group class="mt">
-            <b-form-input />
-            <b-input-group-append>
-              <b-btn variant="default">
-                <i class="fa fa-search text-gray" />
-              </b-btn>
-            </b-input-group-append>
-          </b-input-group>
-        </Widget>
+      <b-col class = "text-center">
+      <h1 class="page-title" style = "font-size: 50px"><b>Overview</b> &nbsp;</h1>
       </b-col>
     </b-row>
+    <br>
+    <Widget
+         title="<h5 style = 'text-align:center;'> <span style = 'font-size:27px;' class='fw-bold'>Recent Recommendations</span></h5>"
+         customHeader settings close
+    >
+     <b-row>
+        <!-- <b-col lg = "1">
+        </b-col> -->
+     <b-col >
+      
+      <table class="table table-striped" >
+           <thead>
+             <tr>
+               <th>Urgency</th>
+               <th>Type</th>
+               <th>Message</th>
+               <th>Recommendation</th>
+             </tr>
+           </thead>
+           <tbody>
+             <tr>
+               <td><p class = "h3" ><b-icon icon="alert-octagon-fill" variant = "danger"></b-icon></p></td>
+               <td style = 'font-size:18px;'>Diseased Crop</td>
+               <td style = 'font-size:18px;'>Mold detected on the leaves of tomato crop</td>
+               <td style = 'font-size:18px;'>Spray the field evenly with 5 litres of pesticide</td>
+             </tr>
+             <tr>
+               <td><p class = "h3" ><b-icon icon="alert-octagon-fill" variant = "danger"></b-icon></p></td>
+               <td style = 'font-size:18px;'>Moisture </td>
+               <td style = 'font-size:18px;'>Moisture levels are higher than specified limit</td>
+               <td style = 'font-size:18px;'>Field should not be watered for the next 23 hours</td>
+             </tr>
+             <!-- <tr>
+               <td><p class = "h3" ><b-icon icon="alert-octagon-fill" variant = "warning"></b-icon></p></td>
+               <td style = 'font-size:18px;'>Larry</td>
+               <td style = 'font-size:18px;'>the Bird</td>
+               <td style = 'font-size:18px;'>Online</td>
+             </tr> -->
+           </tbody>
+         </table>
+          </b-col>
+           </b-row>
+        </Widget>
+    <Widget
+        title="<h4 style = 'text-align:center;'> <span style = 'font-size:30px;' class='fw-bold'>Environment</span></h5>"
+        close customHeader
+    >
+    <br>
     <b-row>
+     
+      <b-col lg="3" xs="15">
+        <Widget
+          title="<h5 style = 'text-align:center;'> <span style = 'font-size:25px;' class='fw-bold'>Humidity</span></h5>"
+          close customHeader
+        >
+          <br>
+          <div>
+            <highcharts :options="chartOptions" :callback="chartCallback"></highcharts>
+          </div>
+          <div>
+        
+            <echart :options="cd.echarts.humidity_line" :init-options="initEchartsOptions" style="height: 370px"></echart>
+       
+          </div>
+        </Widget>
+      </b-col>
+      <b-col lg="5" xs="12">
+        
+        <Widget
+          title="<h5 style = 'text-align:center;'> <span style = 'font-size:25px;' class='fw-bold'>Weather</span></h5>"
+          close customHeader
+        >
+          
+          <div>
+            <weather 
+                api-key= "85702345f96272db7a52c3d597695baa"
+                title="Weather"
+                latitude="25.2854"
+                longitude="51.5310"
+                language="en"
+                units="uk"
+                hide-header = true>
+            </weather>
+          </div>
+          <div>
+        
+            <echart :options="cd.echarts.weather_line" :init-options="initEchartsOptions" style="height: 370px"></echart>
+       
+          </div>
+        </Widget>
+      </b-col>
+      <b-col lg="4" xs="15">
+        <Widget
+          title="<h5 style = 'text-align:center;'> <span style = 'font-size:25px;' class='fw-bold'>Light</span></h5>"
+          close customHeader
+        >
+          <br>
+          <div>
+            <highcharts :options="chartOptions2" :callback="chartCallback1"></highcharts>
+          </div>
+          <div>
+        
+            <echart :options="cd.echarts.light_line" :init-options="initEchartsOptions" style="height: 370px"></echart>
+       
+          </div>
+        </Widget>
+      </b-col>
+      
+    </b-row>
+    </Widget>
+
+    <Widget
+        title="<h4 style = 'text-align:center;'> <span style = 'font-size:27px;' class='fw-bold'>Soil</span></h5>"
+        close customHeader
+    >
+    <br>
+    <b-row>
+     
+      <b-col lg="3" xs="15">
+        <Widget
+          title="<h5 style = 'text-align:center;'> <span style = 'font-size:20px;' class='fw-bold'>pH</span></h5>"
+          close customHeader
+        >
+          <div>
+            <highcharts :options="phChartOptions" :callback="phChartCallback"></highcharts>
+          </div>
+          <div>
+            <echart :options="cd.echarts.ph_line" :init-options="initEchartsOptions" style="height: 370px"></echart>   
+          </div>
+        </Widget>
+      </b-col>
+      <b-col lg="3" xs="15">
+        <Widget
+          title="<h5 style = 'text-align:center;'> <span style = 'font-size:20px;' class='fw-bold'>Moisture</span></h5>"
+          close customHeader
+        >
+          <div>
+            <highcharts :options="chartmoisture" :callback="chartCallback3"></highcharts>
+          </div>
+          <div>
+        
+            <echart :options="cd.echarts.moisture_line" :init-options="initEchartsOptions" style="height: 370px"></echart>
+       
+          </div>
+        </Widget>
+      </b-col>
+      <b-col lg="6" xs="15">
+        <Widget
+          title="<h5 style = 'text-align:center;'> <span style = 'font-size:20px;' class='fw-bold'>Nutrients</span></h5>"
+          close customHeader
+        >
+          <div>
+            <highcharts :options="nutrientChartOptions" :callback="chartCallback4" ></highcharts>
+          </div>
+          <div>
+        
+            <echart :options="cd.echarts.nutrients_line" :init-options="initEchartsOptions" style="height: 370px"></echart>
+       
+          </div>
+        </Widget>
+      </b-col>
+      
+    </b-row>
+    </Widget>
+
+    <!-- <b-row>
       <b-col lg="4" xs="12">
         <Widget
           title="<h6> USERBASE GROWTH </h6>"
@@ -108,222 +203,8 @@
           </p>
         </Widget>
       </b-col>
-      <b-col lg="4" xs="12">
-        <Widget
-          title="<h6> TRAFFIC VALUES </h6>"
-          close settings customHeader
-        >
-          <div class="stats-row">
-            <div class="stat-item">
-              <h6 class="name">Overall Values</h6>
-              <p class="value">17 567 318</p>
-            </div>
-            <div class="stat-item">
-              <h6 class="name">Montly</h6>
-              <p class="value">55 120</p>
-            </div>
-            <div class="stat-item">
-              <h6 class="name">24h</h6>
-              <p class="value">9 695</p>
-            </div>
-          </div>
-          <b-progress variant="danger"
-            :value="60" :max="100" class="bg-gray-lighter progress-xs" />
-          <p>
-            <small>
-              <span class="circle bg-warning text-white">
-                <i class="fa fa-chevron-down" />
-              </span>
-            </small>
-            <span class="fw-semi-bold">&nbsp;8% lower</span>
-            &nbsp;than last month
-          </p>
-        </Widget>
-      </b-col>
-      <b-col lg="4" xs="12">
-        <Widget
-          title="<h6> RANDOM VALUES </h6>"
-          close settings customHeader
-        >
-          <div class="stats-row">
-            <div class="stat-item">
-              <h6 class="name fs-sm">Overcome T.</h6>
-              <p class="value">104.85%</p>
-            </div>
-            <div class="stat-item">
-              <h6 class="name fs-sm">Takeoff Angle</h6>
-              <p class="value">14.29&deg;</p>
-            </div>
-            <div class="stat-item">
-              <h6 class="name fs-sm">World Pop.</h6>
-              <p class="value">7,211M</p>
-            </div>
-          </div>
-          <b-progress variant="primary" :value="60"
-            :max="100" class="bg-gray-lighter progress-xs" />
-          <p>
-            <small>
-              <span class="circle bg-warning text-white">
-                <i class="fa fa-plus" />
-              </span>
-            </small>
-            <span class="fw-semi-bold">&nbsp;8 734 higher</span>
-            &nbsp;than last month
-          </p>
-        </Widget>
-      </b-col>
-    </b-row>
-    <b-row>
-      <b-col lg="4" xs="12">
-        <Widget
-          title="<h6><span class='badge badge-danger'>New</span> Messages</h6>"
-          refresh close customHeader
-        >
-          <div class="widget-body p-0">
-            <div class="list-group list-group-lg">
-              <a class="list-group-item" href="#">
-                <span class="thumb-sm float-left mr">
-                  <img class="rounded-circle" src="../../assets/people/a2.jpg" alt="..." />
-                  <i class="status status-bottom bg-success" />
-                </span>
-                <div>
-                  <h6 class="m-0">Chris Gray</h6>
-                  <p class="help-block text-ellipsis m-0">
-                    Hey! What&apos;s up? So many times since we
-                  </p>
-                </div>
-              </a>
-              <a class="list-group-item" href="#">
-                <span class="thumb-sm float-left mr">
-                  <img class="rounded-circle" src="../../assets/people/a4.jpg" alt="..." />
-                  <i class="status status-bottom bg-success" />
-                </span>
-                <div>
-                  <h6 class="m-0">Jamey Brownlow</h6>
-                  <p class="help-block text-ellipsis m-0">
-                    Good news coming tonight. Seems they agreed to proceed
-                  </p>
-                </div>
-              </a>
-              <a class="list-group-item" href="#">
-                <span class="thumb-sm float-left mr">
-                  <img class="rounded-circle" src="../../assets/people/a1.jpg" alt="..." />
-                  <i class="status status-bottom bg-warning" />
-                </span>
-                <div>
-                  <h6 class="m-0">Livia Walsh</h6>
-                  <p class="help-block text-ellipsis m-0">Check my latest email plz!</p>
-                </div>
-              </a>
-              <a class="list-group-item" href="#">
-                <span class="thumb-sm float-left mr">
-                  <img class="rounded-circle" src="../../assets/people/a5.jpg" alt="..." />
-                  <i class="status status-bottom bg-danger" />
-                </span>
-                <div>
-                  <h6 class="m-0">Jaron Fitzroy</h6>
-                  <p class="help-block text-ellipsis m-0">What about summer break?</p>
-                </div>
-              </a>
-            </div>
-          </div>
-          <footer class="bg-widget mt">
-            <input type="search" class="form-control form-control-sm" placeholder="Search" />
-          </footer>
-        </Widget>
-      </b-col>
-      <b-col lg="4" xs="12">
-        <Widget
-          title="<h6> Market <span class='fw-semi-bold'>Stats</span></h6>"
-          close customHeader
-        >
-          <div class="widget-body">
-            <h3>$720 Earned</h3>
-            <p class="fs-mini text-muted mb mt-sm">
-              Target <span class="fw-semi-bold">$820</span> day earnings
-              is <span class="fw-semi-bold">96%</span> reached.
-            </p>
-          </div>
-          <div class="widget-bottom-overflow">
-            <table class="table table-striped table-sm">
-              <thead class="no-bd">
-                <tr>
-                  <th>
-                    <div class="checkbox abc-checkbox">
-                      <input
-                        type="checkbox"
-                        class="mt-0"
-                        id="checkbox210"
-                        @click="checkTable(0)"
-                        :checked="checkedArr[0]"
-                      />
-                      <label for="checkbox210" />
-                    </div>
-                  </th>
-                  <th>&nbsp;</th>
-                  <th>&nbsp;</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>
-                    <div class="checkbox abc-checkbox">
-                      <input
-                        type="checkbox"
-                        class="mt-0"
-                        id="checkbox212"
-                        @click="checkTable(1)"
-                        :checked="checkedArr[1]"
-                      />
-                      <label for="checkbox212" />
-                    </div>
-                  </td>
-                  <td>HP Core i7</td>
-                  <td class="text-align-right fw-semi-bold">$346.1</td>
-                </tr>
-                <tr>
-                  <td>
-                    <div class="checkbox abc-checkbox">
-                      <input
-                        type="checkbox"
-                        class="mt-0"
-                        id="checkbox214"
-                        @click="checkTable(2)"
-                        :checked="checkedArr[2]"
-                      />
-                      <label for="checkbox214" />
-                    </div>
-                  </td>
-                  <td>Air Pro</td>
-                  <td class="text-align-right fw-semi-bold">$533.1</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="widget-body mt-xlg chart-overflow-bottom">
-            <area-chart class="area-chart" height="100px" :options="{legend: false, scales: {yAxes: [{display: false}], xAxes: [{display: false}]}}"  :chart-data="dataCollection"></area-chart>
-          </div>
-        </Widget>
-      </b-col>
-      <b-col lg="4" xs="12">
-        <Widget
-          title="<h6>Calendar</h6" bodyClass="p-0"
-          settings close customHeader>
-          <v-calendar class="v-calendar" :attributes='calendarAttributes'>
-          </v-calendar>
-          <div class="list-group fs-mini">
-            <a href="#" class="list-group-item text-ellipsis">
-              <span class="badge badge-pill badge-warning float-right">6:45</span>
-              Weed out the flower bed
-            </a>
-            <a href="#" class="list-group-item text-ellipsis">
-              <span class="badge badge-pill badge-success float-right">9:41</span>
-              Stop world water pollution
-            </a>
-          </div>
-        </Widget>
-      </b-col>
-    </b-row>
+      
+    </b-row> -->
   </div>
 </template>
 
@@ -333,6 +214,27 @@ import Widget from '@/components/Widget/Widget';
 import Map from './components/Map/Map';
 import AnimatedNumber from "animated-number-vue";
 import AreaChart from './components/AreaChart/AreaChart';
+import { BootstrapVueIcons } from 'bootstrap-vue'
+import 'bootstrap-vue/src/icons.scss'
+import {chartData, liveChart, liveChartInterval} from './mock';
+
+import ECharts from 'vue-echarts/components/ECharts';
+import 'echarts/lib/chart/line';
+import Highcharts from 'highcharts';
+import exporting from 'highcharts/modules/exporting';
+import exportData from 'highcharts/modules/export-data';
+import { Chart } from 'highcharts-vue';
+import VueWeatherWidget from 'vue-weather-widget';
+import 'vue-weather-widget/dist/css/vue-weather-widget.css';
+
+exporting(Highcharts);
+exportData(Highcharts);
+import hcMore from "highcharts/highcharts-more";
+import solidgauge from "highcharts/modules/solid-gauge";
+hcMore(Highcharts);
+solidgauge(Highcharts);
+
+Vue.use(BootstrapVueIcons)
 
 const todos = [
   {
@@ -359,12 +261,437 @@ export default {
   name: 'Dashboard',
   components: {
     Widget,
+    echart: ECharts,
+    highcharts: Chart,
     Map,
     AnimatedNumber,
+    'weather': VueWeatherWidget,
     AreaChart
   },
   data() {
     return {
+      cd: chartData,
+      ld: liveChart,
+      initEchartsOptions: {
+        renderer: 'canvas'
+      },
+      nutrientChartOptions: {
+      chart: {
+        type: 'bar',
+        backgroundColor: 'transparent',
+        height: 230
+      },
+      title: null,
+      xAxis: {
+        categories: ['Nitrogen', 'Potassium', 'Phosphorus'],
+        title: {
+          text: null,
+        },
+      },
+      yAxis: {
+        min: 0,
+        title: {
+          text: 'Kg/hectare',
+          align: 'high',
+        },
+        gridLineWidth: 0,
+        labels: {
+          overflow: 'justify',
+        },
+      },
+        exporting: {
+            enabled: false
+        },
+
+        tooltip: {
+            enabled: false
+        },
+      plotOptions: {
+        bar: {
+          dataLabels: {
+            enabled: true,
+          },
+        },
+      },
+      legend: {
+        layout: 'vertical',
+        align: 'right',
+        verticalAlign: 'top',
+        x: -40,
+        y: 80,
+        floating: true,
+        borderWidth: 1,
+        backgroundColor:
+          (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF',
+        shadow: true,
+      },
+      credits: {
+        enabled: false,
+      },
+        colors: [
+            '#ff0000',
+            '#f0af03',
+            '#0000ff'
+        ],
+      series: [
+        {
+                      colorByPoint: true,
+
+    showInLegend: false,
+          data: [
+            {y:20, color:'#80BF4C'}, {y:10, color:'#D16654'}, {y:17,color:'#D2DA49'}
+            ],
+        }
+      ],
+    },
+      phChartOptions: {
+
+        chart: {
+            type: 'gauge',
+            backgroundColor: 'transparent',
+            height:230
+        },
+
+   title: null,
+
+       exporting: {
+        enabled: false
+    },
+
+    tooltip: {
+        enabled: false
+    },
+       credits: {
+        enabled: false
+    },
+
+        pane: {
+            startAngle: -90,
+            endAngle: 90, 
+            background: null,
+            center: ['50%', '85%'],
+            size: '140%'
+        },
+
+        // the value axis
+        yAxis: {
+            min: 0,
+            max: 14,
+        lineWidth: 0,
+        tickWidth: 0,
+        minorTickInterval: null,
+            title: {
+                text: 'pH'
+            },
+            plotBands: [{
+                from: 0,
+                to: 6,
+                color: '#DF5353  ' // red
+            }, {
+                from: 6,
+                to: 8,
+                color: '#55BF3B' // yellow
+            }, {
+                from: 8,
+                to: 14,
+                color: '#DDDF0D' // red
+            }]
+        },
+
+        series: [{
+            name: 'Speed',
+            data: [6],
+            tooltip: {
+                valueSuffix: ' km/h'
+            }
+        }]
+
+      },
+
+      chartOptions: {
+    chart: {
+        type: 'solidgauge',
+        height: 230,
+        backgroundColor: 'transparent'
+
+    },
+
+    title: null,
+
+    pane: {
+        center: ['50%', '85%'],
+        size: '140%',
+        startAngle: -90,
+        endAngle: 90,
+        background: {
+            backgroundColor:
+                Highcharts.defaultOptions.legend.backgroundColor || '#EEE',
+            innerRadius: '60%',
+            outerRadius: '100%',
+            shape: 'arc'
+        }
+    },
+
+    exporting: {
+        enabled: false
+    },
+
+    tooltip: {
+        enabled: false
+    },
+
+    // the value axis
+    yAxis: {
+        stops: [
+            [0.1, '#55BF3B'], // green
+            [0.5, '#DDDF0D'], // yellow
+            [0.9, '#DF5353'] // red
+        ],
+        lineWidth: 0,
+        tickWidth: 0,
+        minorTickInterval: null,
+        tickAmount: 2,
+        title: {
+            y: -70
+        },
+        labels: {
+            y: 16
+        },
+                min: 0,
+        max: 100,
+        title: {
+            text: 'Humidity'
+        }
+    },
+
+    plotOptions: {
+        solidgauge: {
+            dataLabels: {
+                y: 5,
+                borderWidth: 0,
+                useHTML: true
+            }
+        }
+    },
+    // yAxis: {
+    //     min: 0,
+    //     max: 100,
+    //     title: {
+    //         text: 'Humidity'
+    //     }
+    // },
+
+    credits: {
+        enabled: false
+    },
+
+    series: [{
+        name: 'Speed',
+        data: [43],
+        dataLabels: {
+            format:
+                '<div style="text-align:center">' +
+                '<span style="font-size:25px">{y}</span><br/>' +
+                '<span style="font-size:12px;opacity:0.4">%</span>' +
+                '</div>'
+        },
+        tooltip: {
+            valueSuffix: '%'
+        }
+    }]
+    },
+
+    chartOptions2: {
+    chart: {
+        type: 'solidgauge',
+        height: 230,
+        backgroundColor: 'transparent'
+
+    },
+
+    title: null,
+
+    pane: {
+        center: ['50%', '85%'],
+        size: '140%',
+        startAngle: -90,
+        endAngle: 90,
+        background: {
+            backgroundColor:
+                Highcharts.defaultOptions.legend.backgroundColor || '#EEE',
+            innerRadius: '60%',
+            outerRadius: '100%',
+            shape: 'arc'
+        }
+    },
+
+    exporting: {
+        enabled: false
+    },
+
+    tooltip: {
+        enabled: false
+    },
+
+    // the value axis
+    yAxis: {
+        stops: [
+            [0.1, '#DF5353'], // red
+        // green
+            [0.5, '#DDDF0D'], // yellow
+                             [0.9, '#55BF3B']
+        ],
+        lineWidth: 0,
+        tickWidth: 0,
+        minorTickInterval: null,
+        tickAmount: 2,
+        title: {
+            y: -70
+        },
+        labels: {
+            y: 16
+        },
+        min: 0,
+        max: 85000,
+        title: {
+            text: 'Light'
+        }
+    },
+
+    plotOptions: {
+        solidgauge: {
+            dataLabels: {
+                y: 10,
+                borderWidth: 0,
+                useHTML: true
+            }
+        }
+    },
+    // yAxis: {
+    //     min: 0,
+    //     max: 100,
+    //     title: {
+    //         text: 'Humidity'
+    //     }
+    // },
+
+    credits: {
+        enabled: false
+    },
+
+    series: [{
+        name: 'Speed',
+        data: [13000],
+        dataLabels: {
+            format:
+                '<div style="text-align:center">' +
+                '<span style="font-size:25px">{y}</span><br/>' +
+                '<span style="font-size:12px;opacity:0.4">lux</span>' +
+                '</div>'
+        },
+        tooltip: {
+            valueSuffix: '%'
+        }
+    }]
+    },
+
+    chartmoisture: {
+    chart: {
+        type: 'solidgauge',
+        height: 230,
+        backgroundColor: 'transparent'
+
+    },
+
+    title: null,
+
+    pane: {
+        center: ['50%', '85%'],
+        size: '140%',
+        startAngle: -90,
+        endAngle: 90,
+        background: {
+            backgroundColor:
+                Highcharts.defaultOptions.legend.backgroundColor || '#EEE',
+            innerRadius: '60%',
+            outerRadius: '100%',
+            shape: 'arc'
+        }
+    },
+
+    exporting: {
+        enabled: false
+    },
+
+    tooltip: {
+        enabled: false
+    },
+
+    // the value axis
+    yAxis: {
+        stops: [
+            
+            [0.1, '#55BF3B'],
+        // green
+            [0.6, '#DDDF0D'], // yellow
+
+            [0.8, '#DF5353'], // red
+      
+        ],
+        lineWidth: 0,
+        tickWidth: 0,
+        minorTickInterval: null,
+        tickAmount: 2,
+        title: {
+            y: -70
+        },
+        labels: {
+            y: 16
+        },
+        min: 0,
+        max: 100,
+        title: {
+            text: 'Moisture'
+        }
+    },
+
+    plotOptions: {
+        solidgauge: {
+            dataLabels: {
+                y: 10,
+                borderWidth: 0,
+                useHTML: true
+            }
+        }
+    },
+    // yAxis: {
+    //     min: 0,
+    //     max: 100,
+    //     title: {
+    //         text: 'Humidity'
+    //     }
+    // },
+
+    credits: {
+        enabled: false
+    },
+
+    series: [{
+        name: 'Speed',
+        data: [15],
+        dataLabels: {
+            format:
+                '<div style="text-align:center">' +
+                '<span style="font-size:25px">{y}</span><br/>' +
+                '<span style="font-size:12px;opacity:0.4">%</span>' +
+                '</div>'
+        },
+        tooltip: {
+            valueSuffix: '%'
+        }
+    }]
+    },
+
       animateNumberOptions: {
         duration: 2000,
         easing: 'easeInQuad',
@@ -381,6 +708,127 @@ export default {
     this.fillData();
   },
   methods: {
+    phChartCallback(chart) {
+      if (!chart.renderer.forExport) {
+setInterval(function () {
+    // Speed
+                var point = chart.series[0].points[0],
+                newVal = 0;
+
+                while(newVal <=4 || newVal>=8){
+                  newVal = Math.round((Math.random()) * 10);
+                }
+                point.update(newVal);
+    
+}, 2000);}
+},
+
+chartCallback1(chart) {
+
+if (!chart.renderer.forExport) {
+
+setInterval(function () {
+
+// Speed
+
+var point,
+newVal,
+inc;
+newVal = 0;
+point = chart.series[0].points[0];
+while (newVal<=13000 || newVal>=14500){
+inc = Math.round((Math.random()) * 30000);
+newVal = inc;
+}
+point.update(newVal);
+}, 2000);
+
+}
+
+},
+
+chartCallback4(chart) {
+
+if (!chart.renderer.forExport) {
+
+setInterval(function () {
+
+// Speed
+
+var point,
+newVal,
+inc;
+newVal = 0;
+point = chart.series[0].points[0];
+
+while (newVal<=16 || newVal>=19){
+inc = Math.round((Math.random()) * 100);
+newVal = inc;
+}
+point.update(newVal);
+// point1.update(newVal);
+}, 2000);
+
+}
+
+},
+
+
+chartCallback3(chart) {
+
+if (!chart.renderer.forExport) {
+
+setInterval(function () {
+
+// Speed
+
+var point,
+newVal,
+inc;
+newVal = 0;
+point = chart.series[0].points[0];
+while (newVal<=15 || newVal>=20){
+inc = Math.round((Math.random()) * 100);
+newVal = inc;
+}
+point.update(newVal);
+}, 2000);
+
+}
+
+},
+
+    chartCallback(chart) {
+
+if (!chart.renderer.forExport) {
+
+setInterval(function () {
+
+// Speed
+
+var point,
+
+newVal,
+
+inc;
+newVal = 0;
+point = chart.series[0].points[0];
+while (newVal<=43 || newVal>=47){
+inc = Math.round((Math.random()) * 100);
+newVal = inc;
+}
+
+
+
+point.update(newVal);
+
+
+}, 2000);
+
+}
+
+},
+
     checkTable(id) {
       let arr = [];
       if (id === 0) {

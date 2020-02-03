@@ -4,7 +4,7 @@
     :class="{sidebar: true}"
   >
     <header class="logo">
-      <router-link to="/app">Light <span class="fw-semi-bold">Blue</span></router-link>
+      <router-link to="/app/dashboard">Smart <span class="fw-semi-bold">Farms</span></router-link>
     </header>
     <ul class="nav">
       <NavLink
@@ -15,43 +15,53 @@
               index="dashboard"
               isHeader
       />
-      <h5 class="navTitle">TEMPLATE</h5>
       <NavLink
-              header="Typography"
-              link="/app/typography"
-              iconName="flaticon-list"
-              index="typography"
+              header="Recommendations"
+              link="/app/recommendations"
+              iconName="flaticon-alarm"
+              index="recommendations"
               isHeader
       />
       <NavLink
-              header="Tables Basic"
-              link="/app/tables"
-              iconName="flaticon-equal-1"
-              index="tables"
+              header="DiseasePrediction"
+              link="/app/diseaseprediction"
+              iconName="flaticon-alarm"
+              index="diseaseprediction"
               isHeader
       />
-      <NavLink
-              header="Notifications"
+      <!-- <NavLink
+              header="Analytics"
               link="/app/notifications"
-              iconName="flaticon-star"
+              iconName="flaticon-radar"
               index="notifications"
               isHeader
+      /> -->
+      <!-- <NavLink
+              :activeItem="activeItem"
+              header="Environment"
+              link="/app/components"
+              iconName="flaticon-cloud"
+              index="components"
+              :childrenLinks="[
+          { header: 'Light', link: '/app/components/charts' },
+          { header: 'Temperature', link: '/app/components/icons' },
+          { header: 'Humidity', link: '/app/components/maps' },
+        ]"
       />
       <NavLink
               :activeItem="activeItem"
-              header="Components"
+              header="Soil"
               link="/app/components"
-              iconName="flaticon-network"
+              iconName="flaticon-tabs"
               index="components"
               :childrenLinks="[
-          { header: 'Charts', link: '/app/components/charts' },
-          { header: 'Icons', link: '/app/components/icons' },
-          { header: 'Maps', link: '/app/components/maps' },
+          { header: 'Moisture', link: '/app/components/charts' },
+          { header: 'Nutrients', link: '/app/components/icons' },
         ]"
-      />
+      /> -->
     </ul>
     <h5 class="navTitle d-sm-down-none">
-      LABELS
+      Indicators
       <a class="actionLink">
         <i class="la la-plus float-right" />
       </a>
@@ -59,40 +69,23 @@
     <ul class="sidebarLabels d-sm-down-none">
       <li>
         <a href="#">
-          <i class="fa fa-circle text-warning mr-2" />
-          <span class="labelName">My Recent</span>
+          <i class="fa fa-circle text-success mr-2" />
+          <span class="labelName">Ok</span>
         </a>
       </li>
       <li>
         <a href="#">
-          <i class="fa fa-circle text-gray mr-2" />
-          <span class="labelName">Starred</span>
+          <i class="fa fa-circle text-warning mr-2" />
+          <span class="labelName">Warning</span>
         </a>
       </li>
       <li>
         <a href="#">
           <i class="fa fa-circle text-danger mr-2" />
-          <span class="labelName">Background</span>
+          <span class="labelName">Urgent</span>
         </a>
       </li>
     </ul>
-
-    <h5 class="navTitle d-sm-down-none">
-      PROJECTS
-    </h5>
-    <div class="sidebarAlerts d-sm-down-none">
-      <b-alert
-        v-for="alert in alerts"
-        :key="alert.id"
-        class="sidebarAlert" variant="transparent"
-        show dismissible
-      >
-        <span>{{alert.title}}</span><br />
-        <b-progress class="sidebarProgress progress-xs mt-1"
-          :variant="alert.color" :value="alert.value" :max="100" />
-        <small>{{alert.footer}}</small>
-      </b-alert>
-    </div>
   </nav>
   </b-collapse>
 </template>

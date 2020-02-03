@@ -116,6 +116,7 @@ import Highcharts from 'highcharts';
 import exporting from 'highcharts/modules/exporting';
 import exportData from 'highcharts/modules/export-data';
 
+
 exporting(Highcharts);
 exportData(Highcharts);
 

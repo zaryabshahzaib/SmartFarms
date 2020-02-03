@@ -38,7 +38,7 @@ export default new Router({
           component: Dashboard,
         },
         {
-          path: 'typography',
+          path: 'diseaseprediction',
           name: 'Typography',
           component: Typography,
         },
@@ -48,7 +48,7 @@ export default new Router({
           component: Tables,
         },
         {
-          path: 'notifications',
+          path: 'recommendations',
           name: 'Notifications',
           component: Notifications,
         },

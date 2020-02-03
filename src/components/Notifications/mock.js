@@ -3,7 +3,7 @@ import config from '../../config';
 const colors = config.chartColors;
 
 let columnColors = [colors.blue, colors.green, colors.orange, colors.red, colors.purple, colors.dark, colors.teal, colors.pink];
-let lineColors = [colors.blue, colors.green, colors.orange];
+let lineColors = [colors.blue, colors.green, colors.orange, colors.yellow];
  
 export const chartData = {
   apex: {
@@ -138,7 +138,7 @@ export const chartData = {
               }
             }
           },
-          data: ["2015-1", "2015-2", "2015-3", "2015-4", "2015-5", "2015-6", "2015-7", "2015-8", "2015-9", "2015-10", "2015-11", "2015-12"]
+          
         }
       ],
       yAxis: [
@@ -172,6 +172,653 @@ export const chartData = {
           type: 'line',
           smooth: true,
           data: [3.9, 5.9, 11.1, 18.7, 48.3, 69.2, 231.6, 46.6, 55.4, 18.4, 10.3, 0.7]
+        }
+      ]
+    },
+
+
+    yield_line: {
+      color: lineColors,
+      tooltip: {
+        trigger: 'none',
+        axisPointer: {
+          type: 'cross'
+        }
+      },
+      legend: {
+        data: ['Optimal Yield', 'Current Yield'],
+        textStyle: {
+          color: colors.textColor
+        }
+      },
+      grid: {
+        top: 70,
+        bottom: 50,
+      },
+      xAxis: [
+        {
+          type: 'category',
+          axisTick: {
+            alignWithLabel: true
+          },
+          axisLine: {
+            onZero: false,
+            lineStyle: {
+              color: lineColors[1]
+            }
+          },
+          axisPointer: {
+            label: {
+              formatter: function (params) {
+                return 'Yield  ' + params.value
+                  + (params.seriesData.length ? '：' + params.seriesData[0].data : '');
+              }
+            }
+          },
+          data: ["2020-2", "2020-3", "2020-4", "2020-5", "2020-6", "2020-7", "2020-8", "2020-9", "2020-10", "2020-11", "2020-12"]
+        },
+        {
+          type: 'category',
+          axisTick: {
+            alignWithLabel: true
+          },
+          axisLine: {
+            onZero: false,
+            lineStyle: {
+              color: lineColors[0]
+            }
+          },
+          axisPointer: {
+            label: {
+              formatter: function (params) {
+                return 'Yield  ' + params.value
+                  + (params.seriesData.length ? '：' + params.seriesData[0].data : '');
+              }
+            }
+          },
+          
+        }
+      ],
+      yAxis: [
+        {
+          type: 'value',
+          axisLabel: {
+            color: colors.textColor
+          },
+          axisLine: {
+            lineStyle: {
+              color: colors.textColor
+            }
+          },
+          axisPointer: {
+            label: {
+              color: colors.dark
+            }
+          }
+        }
+      ],
+      series: [
+        {
+          name: 'Optimal Yield',
+          type: 'line',
+          xAxisIndex: 1,
+          smooth: true,
+          data: [500, 600, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3]
+        },
+        {
+          name: 'Current Yield',
+          type: 'line',
+          smooth: true,
+          data: [3.9, 5.9, 11.1, 18.7, 48.3, 69.2, 231.6, 46.6, 55.4, 18.4, 10.3, 0.7]
+        }
+      ]
+    },
+
+
+    nutrients_line: {
+      color: lineColors,
+      tooltip: {
+        trigger: 'none',
+        axisPointer: {
+          type: 'cross'
+        }
+      },
+      legend: {
+        data: ['Nitrogen', 'Phosphorous', 'Potassium'],
+        textStyle: {
+          color: colors.textColor
+        }
+      },
+      grid: {
+        top: 70,
+        bottom: 50,
+      },
+      xAxis: [
+        {
+          type: 'category',
+          axisTick: {
+            alignWithLabel: true
+          },
+          axisLine: {
+            onZero: false,
+            lineStyle: {
+              color: lineColors[1]
+            }
+          },
+          axisPointer: {
+            label: {
+              formatter: function (params) {
+                console.log(params);
+                return  params.value
+                  + (params.seriesData.length ? '：' + params.seriesData[0].data : '');
+              }
+            }
+          },
+          data: ["25-01-2020", "26-01-2020", "27-01-2020", "28-01-2020", "29-01-2020", "30-01-2020", "31-01-2020"]
+        },
+        {
+          type: 'category',
+          axisTick: {
+            alignWithLabel: true
+          },
+          axisLine: {
+            onZero: false,
+            lineStyle: {
+              color: lineColors[0]
+            }
+          },
+          axisPointer: {
+            label: {
+              formatter: function (params) {
+                return  params.value
+                  + (params.seriesData.length ? '：' + params.seriesData[1].data : '');
+              }
+            }
+          },
+          // data: ["2015-1", "2015-2", "2015-3", "2015-4", "2015-5", "2015-6", "2015-7", "2015-8", "2015-9", "2015-10", "2015-11", "2015-12"]
+        },
+        {
+          type: 'category',
+          axisTick: {
+            alignWithLabel: true
+          },
+          axisLine: {
+            onZero: false,
+            lineStyle: {
+              color: lineColors[0]
+            }
+          },
+          axisPointer: {
+            label: {
+              formatter: function (params) {
+                return  params.value
+                  + (params.seriesData.length ? '：' + params.seriesData[2].data : '');
+              }
+            }
+          },
+          // data: ["2015-1", "2015-2", "2015-3", "2015-4", "2015-5", "2015-6", "2015-7", "2015-8", "2015-9", "2015-10", "2015-11", "2015-12"]
+        }
+      ],
+      yAxis: [
+        {
+          type: 'value',
+          axisLabel: {
+            color: colors.textColor
+          },
+          axisLine: {
+            lineStyle: {
+              color: colors.textColor
+            }
+          },
+          min: 8,
+          tickAmount: 2,
+          axisPointer: {
+            label: {
+              color: colors.dark
+            }
+          }
+        }
+      ],
+      series: [
+        {
+          name: 'Nitrogen',
+          type: 'line',
+          xAxisIndex: 1,
+          smooth: true,
+          data: [13, 18, 15, 20, 20, 18, 17, 15, 15, 18.8, 20, 19]
+        },
+        {
+          name: 'Phosphorous',
+          type: 'line',
+          smooth: true,
+          data: [9, 10, 14, 14, 18, 20, 15, 15, 13, 13, 12, 10]
+        },
+        {
+          name: 'Potassium',
+          type: 'line',
+          smooth: true,
+          data: [17, 15, 14, 20, 20, 27, 29, 25, 25, 20, 18, 17]
+        },
+
+      ]
+    },
+    humidity_line: {
+      color: lineColors[0],
+      tooltip: {
+        trigger: 'none',
+        axisPointer: {
+          type: 'cross'
+        }
+      },
+      legend: {
+        data: ['Weekly Humidity'],
+        textStyle: {
+          color: colors.textColor
+        }
+      },
+      grid: {
+        top: 70,
+        bottom: 50,
+      },
+      xAxis: [
+        {
+          type: 'category',
+          axisTick: {
+            alignWithLabel: true
+          },
+          axisLine: {
+            onZero: false,
+            lineStyle: {
+              color: lineColors[0]
+            }
+          },
+          axisPointer: {
+            label: {
+              formatter: function (params) {
+                return 'Humidity  ' + params.value
+                  + (params.seriesData.length ? '：' + params.seriesData[0].data : '');
+              }
+            }
+          },
+          data: ["25-01-2020", "26-01-2020", "27-01-2020", "28-01-2020", "29-01-2020", "30-01-2020", "31-01-2020"]
+        }
+      ],
+      yAxis: [
+        {
+          type: 'value',
+          axisLabel: {
+            color: colors.textColor
+          },
+          min: 30,
+          tickAmount: 5,
+          axisLine: {
+            lineStyle: {
+              color: colors.textColor
+            }
+          },
+          axisPointer: {
+            label: {
+              color: colors.dark
+            }
+          }
+        }
+      ],
+      series: [
+        {
+          name: 'Weekly Humidity',
+          type: 'line',
+          smooth: true,
+          data: [39, 42, 50, 48, 47, 53, 40]
+        }
+      ]
+    },
+    weather_line: {
+      color: lineColors[1],
+      tooltip: {
+        trigger: 'none',
+        axisPointer: {
+          type: 'cross'
+        }
+      },
+      legend: {
+        data: ['Weekly Average Temperature'],
+        textStyle: {
+          color: colors.textColor
+        }
+      },
+      grid: {
+        top: 70,
+        bottom: 50,
+      },
+      xAxis: [
+        {
+          type: 'category',
+          axisTick: {
+            alignWithLabel: true
+          },
+          axisLine: {
+            onZero: false,
+            lineStyle: {
+              color: lineColors[0]
+            }
+          },
+          axisPointer: {
+            label: {
+              formatter: function (params) {
+                return 'Temperature  ' + params.value
+                  + (params.seriesData.length ? '：' + params.seriesData[0].data : '');
+              }
+            }
+          },
+          data: ["25-01-2020", "26-01-2020", "27-01-2020", "28-01-2020", "29-01-2020", "30-01-2020", "31-01-2020"]
+        }
+      ],
+      yAxis: [
+        {
+          type: 'value',
+          axisLabel: {
+            color: colors.textColor
+          },
+          min: 10,
+          tickAmount: 5,
+          axisLine: {
+            lineStyle: {
+              color: colors.textColor
+            }
+          },
+          axisPointer: {
+            label: {
+              color: colors.dark
+            }
+          }
+        }
+      ],
+      series: [
+        {
+          name: 'Weekly Average Temperature',
+          type: 'line',
+          smooth: true,
+          data: [15, 16, 13, 18, 15, 17, 19]
+        }
+      ]
+    },
+    light_line: {
+      color: lineColors[2],
+      tooltip: {
+        trigger: 'none',
+        axisPointer: {
+          type: 'cross'
+        }
+      },
+      legend: {
+        data: ['Weekly Luminous Intensity'],
+        textStyle: {
+          color: colors.textColor
+        }
+      },
+      grid: {
+        top: 70,
+        bottom: 50,
+      },
+      xAxis: [
+        {
+          type: 'category',
+          axisTick: {
+            alignWithLabel: true
+          },
+          axisLine: {
+            onZero: false,
+            lineStyle: {
+              color: lineColors[0]
+            }
+          },
+          axisPointer: {
+            label: {
+              formatter: function (params) {
+                return 'Luminous  ' + params.value
+                  + (params.seriesData.length ? '：' + params.seriesData[0].data : '');
+              }
+            }
+          },
+          data: ["25-01-2020", "26-01-2020", "27-01-2020", "28-01-2020", "29-01-2020", "30-01-2020", "31-01-2020"]
+        }
+      ],
+      yAxis: [
+        {
+          type: 'value',
+          axisLabel: {
+            color: colors.textColor
+          },
+          min: 8000,
+          tickAmount: 1000,
+          axisLine: {
+            lineStyle: {
+              color: colors.textColor
+            }
+          },
+          axisPointer: {
+            label: {
+              color: colors.dark
+            }
+          }
+        }
+      ],
+      series: [
+        {
+          name: 'Weekly Average Temperature',
+          type: 'line',
+          smooth: true,
+          data: [15000, 11000, 10000, 14500, 15000, 14000, 13000]
+        }
+      ]
+    },
+    ph_line: {
+      color: lineColors[2],
+      tooltip: {
+        trigger: 'none',
+        axisPointer: {
+          type: 'cross'
+        }
+      },
+      legend: {
+        data: ['Weekly Average pH'],
+        textStyle: {
+          color: colors.textColor
+        }
+      },
+      grid: {
+        top: 70,
+        bottom: 50,
+      },
+      xAxis: [
+        {
+          type: 'category',
+          axisTick: {
+            alignWithLabel: true
+          },
+          axisLine: {
+            onZero: false,
+            lineStyle: {
+              color: lineColors[0]
+            }
+          },
+          axisPointer: {
+            label: {
+              formatter: function (params) {
+                return 'pH  ' + params.value
+                  + (params.seriesData.length ? '：' + params.seriesData[0].data : '');
+              }
+            }
+          },
+          data: ["25-01-2020", "26-01-2020", "27-01-2020", "28-01-2020", "29-01-2020", "30-01-2020", "31-01-2020"]
+        }
+      ],
+      yAxis: [
+        {
+          type: 'value',
+          axisLabel: {
+            color: colors.textColor
+          },
+          min: 6,
+          tickAmount: 0.2,
+          axisLine: {
+            lineStyle: {
+              color: colors.textColor
+            }
+          },
+          axisPointer: {
+            label: {
+              color: colors.dark
+            }
+          }
+        }
+      ],
+      series: [
+        {
+          name: 'Weekly Average pH',
+          type: 'line',
+          smooth: true,
+          data: [6.2, 6.5, 7.5, 7.2, 6.8, 6.5, 6.6]
+        }
+      ]
+    },
+    moisture_line: {
+      color: lineColors[0],
+      tooltip: {
+        trigger: 'none',
+        axisPointer: {
+          type: 'cross'
+        }
+      },
+      legend: {
+        data: ['Weekly Average Moisture'],
+        textStyle: {
+          color: colors.textColor
+        }
+      },
+      grid: {
+        top: 70,
+        bottom: 50,
+      },
+      xAxis: [
+        {
+          type: 'category',
+          axisTick: {
+            alignWithLabel: true
+          },
+          axisLine: {
+            onZero: false,
+            lineStyle: {
+              color: lineColors[0]
+            }
+          },
+          axisPointer: {
+            label: {
+              formatter: function (params) {
+                return 'Moisture  ' + params.value
+                  + (params.seriesData.length ? '：' + params.seriesData[0].data : '');
+              }
+            }
+          },
+          data: ["25-01-2020", "26-01-2020", "27-01-2020", "28-01-2020", "29-01-2020", "30-01-2020", "31-01-2020"]
+        }
+      ],
+      yAxis: [
+        {
+          type: 'value',
+          axisLabel: {
+            color: colors.textColor
+          },
+          min: 14,
+          tickAmount: 2,
+          axisLine: {
+            lineStyle: {
+              color: colors.textColor
+            }
+          },
+          axisPointer: {
+            label: {
+              color: colors.dark
+            }
+          }
+        }
+      ],
+      series: [
+        {
+          name: 'Weekly Average Moisture',
+          type: 'line',
+          smooth: true,
+          data: [17, 20, 23, 15, 16, 20, 19]
+        }
+      ]
+    },
+    nutrient_line: {
+      color: lineColors[0],
+      tooltip: {
+        trigger: 'none',
+        axisPointer: {
+          type: 'cross'
+        }
+      },
+      legend: {
+        data: ['Weekly Average Moisture'],
+        textStyle: {
+          color: colors.textColor
+        }
+      },
+      grid: {
+        top: 70,
+        bottom: 50,
+      },
+      xAxis: [
+        {
+          type: 'category',
+          axisTick: {
+            alignWithLabel: true
+          },
+          axisLine: {
+            onZero: false,
+            lineStyle: {
+              color: lineColors[0]
+            }
+          },
+          axisPointer: {
+            label: {
+              formatter: function (params) {
+                return 'Moisture  ' + params.value
+                  + (params.seriesData.length ? '：' + params.seriesData[0].data : '');
+              }
+            }
+          },
+          data: ["25-01-2020", "26-01-2020", "27-01-2020", "28-01-2020", "29-01-2020", "30-01-2020", "31-01-2020"]
+        }
+      ],
+      yAxis: [
+        {
+          type: 'value',
+          axisLabel: {
+            color: colors.textColor
+          },
+          min: 6,
+          tickAmount: 0.2,
+          axisLine: {
+            lineStyle: {
+              color: colors.textColor
+            }
+          },
+          axisPointer: {
+            label: {
+              color: colors.dark
+            }
+          }
+        }
+      ],
+      series: [
+        {
+          name: 'Weekly Average Moisture',
+          type: 'line',
+          smooth: true,
+          data: [17, 20, 23, 15, 16, 20, 19]
         }
       ]
     },
@@ -324,11 +971,6 @@ export const chartData = {
   },
   highcharts: {
     mixed: {
-      chart: {
-        type: 'spline',
-        height: 350,
-        backgroundColor: 'transparent'
-      },
       exporting: {
         buttons: {
           contextButton: {
@@ -389,37 +1031,6 @@ export const chartData = {
       colors: [colors.orange, '#ffebb2', '#ffc0d9'],
 
       series: [{
-        name: "Winter 2014-2015",
-        data: [
-          [Date.UTC(1970, 10, 25), 0],
-          [Date.UTC(1970, 11, 6), 0.25],
-          [Date.UTC(1970, 11, 20), 1.41],
-          [Date.UTC(1970, 11, 25), 1.64],
-          [Date.UTC(1971, 0, 4), 1.6],
-          [Date.UTC(1971, 0, 17), 2.55],
-          [Date.UTC(1971, 0, 24), 2.62],
-          [Date.UTC(1971, 1, 4), 2.5],
-          [Date.UTC(1971, 1, 14), 2.42],
-          [Date.UTC(1971, 2, 6), 2.74],
-          [Date.UTC(1971, 2, 14), 2.62],
-          [Date.UTC(1971, 2, 24), 2.6],
-          [Date.UTC(1971, 3, 1), 2.81],
-          [Date.UTC(1971, 3, 11), 2.63],
-          [Date.UTC(1971, 3, 27), 2.77],
-          [Date.UTC(1971, 4, 4), 2.68],
-          [Date.UTC(1971, 4, 9), 2.56],
-          [Date.UTC(1971, 4, 14), 2.39],
-          [Date.UTC(1971, 4, 19), 2.3],
-          [Date.UTC(1971, 5, 4), 2],
-          [Date.UTC(1971, 5, 9), 1.85],
-          [Date.UTC(1971, 5, 14), 1.49],
-          [Date.UTC(1971, 5, 19), 1.27],
-          [Date.UTC(1971, 5, 24), 0.99],
-          [Date.UTC(1971, 5, 29), 0.67],
-          [Date.UTC(1971, 6, 3), 0.18],
-          [Date.UTC(1971, 6, 4), 0]
-        ]
-      }, {
         name: "Winter 2015-2016",
         type: 'areaspline',
         data: [
